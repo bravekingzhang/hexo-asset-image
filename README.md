@@ -1,12 +1,11 @@
 # hexo-asset-image
 
-
-Give asset image in hexo a absolutely path automatically
+解决本地`hexo server`无法预览的问题
 
 # Usege
 
 ```shell
-npm install hexo-asset-image --save
+npm install https://github.com/bravekingzhang/hexo-asset-image --sa
 ```
 
 # Example
