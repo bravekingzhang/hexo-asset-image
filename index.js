@@ -19,9 +19,10 @@ hexo.extend.filter.register('after_post_render', function(data){
       });
 
       $('img').each(function(){
-		if ($(this).attr('src')){
+		if ($(this).attr('src') || $(this).attr('data-src')) {//if the image has a src or data-src attribute
 			// For windows style path, we replace '\' to '/'.
-			var src = $(this).attr('src').replace('\\', '/');
+			let src = $(this).attr('src') || $(this).attr('data-src');
+			src.replace('\\', '/');
 			if(!/http[s]*.*|\/\/.*/.test(src) &&
 			   !/^\s*\//.test(src)) {
 			  // For "about" page, the first part of "src" can't be removed.
@@ -31,6 +32,7 @@ hexo.extend.filter.register('after_post_render', function(data){
 				  src = imageArr[1]
 			  }
 			  $(this).attr('src', path + src);
+			  $(this).attr('data-src', path + src);
 			  console.info&&console.info("update link as:-->"+ path + src);
 			}
 		}else{
